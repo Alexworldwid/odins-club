@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Odin's Club</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body >
+    <%- include("partials/memberForm") %>
+    <%- include("partials/adminForm") %>
+    <%- include("partials/deleteModal")%>
+    <%- include("partials/hideModal")%>
+    <nav>
+        <div>
+            <a href="/">The Odin"s Club</a>
+        </div>
+        <div>
+            <%if (locals.currentUser) {%>
+                <a href="/log-out">LOG OUT</a>
+            <%} else { %>
+                <a href="/sign-up">
+                    Sign Up
+                </a>
+            <%}%>
+        </div>
+    </nav>
+
+    <section>
+            <article class="hero">
+                <div class="welcome-section">
+                    <h1>WELCOME BACK <%= currentUser.firstname %> <%= currentUser.lastname %></h1>
+
+                    <div class="panels-box">
+                        <button id="toggleBtn">Status: <%= currentUser.role %></button>
+                        <div id="panel" class="panels">
+                            <button id="memberBtn">Become Member</button>
+                            <button id="adminBtn">Become Admin</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+    </section>
+
+    <%- include("partials/postList", {posts: posts, user: currentUser }) %>
+    <a style="background-color: blueviolet; padding: 4px 8px; position: absolute; bottom: 20px; right: 8px; border-radius: 4px;" href="/create-post">
+        Create Post
+    </a>
+
+    <script src="/js/main.js" defer></script>
+    <script src="/js/admin.js" defer></script>
+</body>
+</html>

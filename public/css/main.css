@@ -1,0 +1,263 @@
+* {
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+};
+
+
+.hero {
+    display: flex;
+    flex-direction: column;
+}
+.welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: blueviolet;
+    color: white;
+    text-decoration: none;
+    padding: 4px 8px;
+    z-index: 99;
+}
+.hero {
+    padding: 0 8px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+#toggleBtn, #memberBtn, #adminBtn {
+    cursor: pointer;
+}
+#toggleBtn {
+    border: none;
+    background-color: rgba(138, 43, 226, 0.8);
+    padding: 4px 8px;
+    color: white;
+    border-radius: 4px;
+}
+
+
+.panels-box {
+    position: relative;
+}
+
+#memberFormWrapper, #adminFormWrapper {
+    position: absolute;
+    inset: 56px 0 0 0;
+    background-color: rgba(212, 212, 212, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#memberFormWrapper.open, #adminFormWrapper.open {
+    display: flex;
+}
+
+
+#memberFormWrapper form, #adminFormWrapper form {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    padding: 24px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+}
+#memberFormWrapper form h2, #adminFormWrapper form h2{
+    text-align: center;
+    color: blueviolet;
+    font-size: 40px;
+}
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 50%;
+}
+.hide-btn {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 50%;
+}
+.input-bx {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.input-bx label {
+    font-weight: 400;
+}
+.input-bx input {
+    padding: 4px 8px;
+    border: none;
+    outline: 1px solid blueviolet;
+    outline-offset: -2px;
+    font-size: 16px;
+}
+
+#memberFormWrapper form button #adminFormWrapper form button {
+    background-color: blueviolet;
+    padding: 8px 0;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+#memberBtn, #adminBtn {
+    border: none;
+    background-color: rgba(138, 43, 226, 0.8);
+    padding: 4px 8px;
+    color: white;
+    border-radius: 4px;
+}
+.admin-btn-bx {
+    display: flex;
+    gap: 4px;
+}
+
+
+.deleteModal, .hideModal {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  min-width: 280px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+#deleteBtn, #hideBtn  {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+}
+#cancelBtn, #cancelHideBtn {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+}
+#deleteForm, #hidePostForm {
+    display: flex;
+    gap: 4px;
+}
+
+.post-bx {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    list-style: none;
+    padding: 0 8px;
+}
+.post-item {
+    background: blueviolet;
+    color: white;
+    padding: 16px;
+    border-radius: 4px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 4px;
+}
+.modalBox, .hideModalBox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .post-bx {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* mobile */
+@media screen and (max-width: 420px) {
+    .post-bx {
+        grid-template-columns: 1fr;
+    }
+    .delete-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 24px;
+        cursor: pointer;
+        width: 100%;
+    }
+    .hide-btn {
+        width: 100%;
+    }       
+}
+
+.panels {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 4px;
+  padding: 8px;
+  width: 200px;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 40;
+}
+
+.panels.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+};
+
+
+
+
+
